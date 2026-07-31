@@ -22,7 +22,6 @@ export default function Login() {
             <label>Email</label>
             <input 
               type="email"
-              placeholder="seu@email.com"
             />
           </div>
 
@@ -31,7 +30,6 @@ export default function Login() {
             <label>Senha</label>
             <input 
               type="password"
-              placeholder="••••••••"
             />
           </div>
 
