@@ -2,8 +2,12 @@
   min-height: 100vh;
   display: flex;
   background: #050505;
-  color: white;
+  color: #fff;
 }
+
+/* =========================
+   SIDEBAR
+========================= */
 
 .sidebar {
   width: 250px;
@@ -13,6 +17,7 @@
   display: flex;
   flex-direction: column;
   background: #080808;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -20,6 +25,7 @@
   font-weight: 800;
   margin-bottom: 55px;
   padding-left: 12px;
+  letter-spacing: -0.5px;
 }
 
 .logo span {
@@ -33,20 +39,29 @@
 }
 
 .sidebar nav a {
-  color: #888;
+  color: #777;
   text-decoration: none;
   padding: 13px 14px;
   border-radius: 10px;
-  transition: 0.2s;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
-.sidebar nav a:hover,
+.sidebar nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(3px);
+}
+
 .sidebar nav .active {
-  color: white;
+  color: #d4af37;
   background: rgba(212, 175, 55, 0.1);
 }
 
-.sidebar nav .active {
+.sidebar nav .active:hover {
+  background: rgba(212, 175, 55, 0.14);
   color: #d4af37;
 }
 
@@ -64,10 +79,16 @@
   color: #888;
 }
 
+/* =========================
+   CONTENT
+========================= */
+
 .content {
   flex: 1;
+  width: 100%;
   padding: 45px;
   max-width: 1500px;
+  overflow: hidden;
 }
 
 .header {
@@ -85,6 +106,13 @@
 .header h1 {
   margin-top: 6px;
   font-size: 32px;
+  letter-spacing: -0.8px;
+}
+
+.date {
+  margin-top: 8px;
+  color: #555;
+  font-size: 14px;
 }
 
 .profile {
@@ -96,7 +124,26 @@
   color: #d4af37;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+.profile:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 175, 55, 0.16);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.12);
+}
+
+.profile:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
+/* =========================
+   STAT CARDS
+========================= */
 
 .stats {
   display: grid;
@@ -107,9 +154,23 @@
 
 .card {
   padding: 25px;
-  background: #0d0d0d;
+  background: linear-gradient(
+    145deg,
+    #101010,
+    #0b0b0b
+  );
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.22);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
 .card span {
@@ -121,10 +182,33 @@
   display: block;
   margin-top: 12px;
   font-size: 28px;
+  letter-spacing: -0.5px;
 }
 
+.card small {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.positive {
+  color: #6fa878 !important;
+}
+
+.neutral {
+  color: #777 !important;
+}
+
+/* =========================
+   AGENDA
+========================= */
+
 .agenda {
-  background: #0d0d0d;
+  background: linear-gradient(
+    145deg,
+    #101010,
+    #0b0b0b
+  );
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   padding: 28px;
@@ -140,6 +224,7 @@
 .sectionHeader h2 {
   margin-top: 6px;
   font-size: 21px;
+  letter-spacing: -0.3px;
 }
 
 .sectionHeader button {
@@ -149,7 +234,21 @@
   padding: 10px 16px;
   border-radius: 9px;
   cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
+
+.sectionHeader button:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.65);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   APPOINTMENTS
+========================= */
 
 .appointment {
   display: grid;
@@ -158,6 +257,11 @@
   gap: 20px;
   padding: 20px 5px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s ease;
+}
+
+.appointment:hover {
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .time {
@@ -165,15 +269,25 @@
   font-weight: 700;
 }
 
-.appointment div:nth-child(2) {
+.client {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.appointment div:nth-child(2) span {
+.client strong {
+  font-size: 15px;
+}
+
+.client span {
   color: #777;
   font-size: 13px;
+}
+
+.appointmentInfo {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .barber {
@@ -181,13 +295,38 @@
   font-size: 13px;
 }
 
-@media (max-width: 900px) {
+.status {
+  min-width: 82px;
+  text-align: center;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.confirmed {
+  color: #78b482;
+  background: rgba(120, 180, 130, 0.08);
+  border: 1px solid rgba(120, 180, 130, 0.15);
+}
+
+.pending {
+  color: #c7a65b;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
   .sidebar {
-    width: 210px;
+    width: 220px;
   }
 
   .content {
-    padding: 30px;
+    padding: 35px;
   }
 
   .stats {
@@ -195,7 +334,11 @@
   }
 }
 
-@media (max-width: 650px) {
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
   .sidebar {
     display: none;
   }
@@ -204,15 +347,95 @@
     padding: 25px 18px;
   }
 
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .header h1 {
+    font-size: 27px;
+  }
+
+  .date {
+    line-height: 1.5;
+  }
+
   .stats {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .card {
+    padding: 21px;
+  }
+
+  .agenda {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .sectionHeader h2 {
+    font-size: 18px;
+  }
+
+  .sectionHeader button {
+    white-space: nowrap;
   }
 
   .appointment {
-    grid-template-columns: 65px 1fr;
+    grid-template-columns: 60px 1fr;
+    gap: 12px;
+    padding: 18px 3px;
   }
 
-  .barber {
-    display: none;
+  .appointmentInfo {
+    grid-column: 2;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .status {
+    min-width: 78px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 430px) {
+  .content {
+    padding: 22px 14px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .profile {
+    width: 42px;
+    height: 42px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+  }
+
+  .sectionHeader button {
+    width: 100%;
+  }
+
+  .appointment {
+    grid-template-columns: 55px 1fr;
+  }
+
+  .client strong {
+    font-size: 14px;
   }
 }

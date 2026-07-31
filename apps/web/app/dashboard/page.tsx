@@ -10,14 +10,28 @@ export default function Dashboard() {
 
         <nav>
           <a className={styles.active} href="/dashboard">
-            Dashboard
+            <span>Dashboard</span>
           </a>
 
-          <a href="#">Agenda</a>
-          <a href="#">Clientes</a>
-          <a href="#">Barbeiros</a>
-          <a href="#">Serviços</a>
-          <a href="#">Financeiro</a>
+          <a href="#">
+            <span>Agenda</span>
+          </a>
+
+          <a href="#">
+            <span>Clientes</span>
+          </a>
+
+          <a href="#">
+            <span>Barbeiros</span>
+          </a>
+
+          <a href="#">
+            <span>Serviços</span>
+          </a>
+
+          <a href="#">
+            <span>Financeiro</span>
+          </a>
         </nav>
 
         <div className={styles.sidebarFooter}>
@@ -31,9 +45,12 @@ export default function Dashboard() {
           <div>
             <span className={styles.welcome}>Bem-vindo de volta</span>
             <h1>Olá, Kauan 👋</h1>
+            <p className={styles.date}>
+              Aqui está o resumo da sua barbearia hoje.
+            </p>
           </div>
 
-          <button className={styles.profile}>
+          <button className={styles.profile} aria-label="Abrir perfil">
             KR
           </button>
         </header>
@@ -42,21 +59,25 @@ export default function Dashboard() {
           <div className={styles.card}>
             <span>Agendamentos hoje</span>
             <strong>12</strong>
+            <small className={styles.positive}>↑ 8% comparado a ontem</small>
           </div>
 
           <div className={styles.card}>
             <span>Clientes</span>
             <strong>48</strong>
+            <small className={styles.positive}>↑ 5 novos este mês</small>
           </div>
 
           <div className={styles.card}>
             <span>Barbeiros</span>
             <strong>4</strong>
+            <small className={styles.neutral}>Equipe ativa</small>
           </div>
 
           <div className={styles.card}>
             <span>Faturamento</span>
             <strong>R$ 1.280</strong>
+            <small className={styles.positive}>↑ 12% este mês</small>
           </div>
         </section>
 
@@ -73,34 +94,49 @@ export default function Dashboard() {
           <div className={styles.appointment}>
             <div className={styles.time}>09:00</div>
 
-            <div>
+            <div className={styles.client}>
               <strong>João Silva</strong>
               <span>Corte + Barba</span>
             </div>
 
-            <span className={styles.barber}>Carlos</span>
+            <div className={styles.appointmentInfo}>
+              <span className={styles.barber}>Carlos</span>
+              <span className={`${styles.status} ${styles.confirmed}`}>
+                Confirmado
+              </span>
+            </div>
           </div>
 
           <div className={styles.appointment}>
             <div className={styles.time}>10:30</div>
 
-            <div>
+            <div className={styles.client}>
               <strong>Pedro Santos</strong>
               <span>Corte</span>
             </div>
 
-            <span className={styles.barber}>Lucas</span>
+            <div className={styles.appointmentInfo}>
+              <span className={styles.barber}>Lucas</span>
+              <span className={`${styles.status} ${styles.pending}`}>
+                Aguardando
+              </span>
+            </div>
           </div>
 
           <div className={styles.appointment}>
             <div className={styles.time}>14:00</div>
 
-            <div>
+            <div className={styles.client}>
               <strong>Gabriel Souza</strong>
               <span>Corte + Barba</span>
             </div>
 
-            <span className={styles.barber}>Carlos</span>
+            <div className={styles.appointmentInfo}>
+              <span className={styles.barber}>Carlos</span>
+              <span className={`${styles.status} ${styles.confirmed}`}>
+                Confirmado
+              </span>
+            </div>
           </div>
         </section>
       </section>
