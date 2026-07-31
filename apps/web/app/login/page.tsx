@@ -43,16 +43,16 @@ export default function Login() {
 
         <p className={styles.register}>
           Ainda não possui conta?
-          <a href="#">
+          <a href="/register">
             Criar agora
-          </a>
+         </a>
         </p>
 
 
        <footer>
   © 2026 Kauan Rodrigues
 </footer>
-
+ 
       </section>
     </main>
   );
