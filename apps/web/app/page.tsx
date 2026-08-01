@@ -20,13 +20,13 @@ export default function Home() {
           </p>
 
           <div className={styles.buttons}>
-            <button className={styles.primary}>
+            <a href="/register" className={styles.primary}>
               Começar agora
-            </button>
+            </a>
 
-            <button className={styles.secondary}>
+            <a href="/dashboard" className={styles.secondary}>
               Conhecer plataforma
-            </button>
+            </a>
           </div>
         </div>
 
