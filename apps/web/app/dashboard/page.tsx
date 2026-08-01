@@ -9,30 +9,30 @@ export default function Dashboard() {
         </div>
 
         <nav>
-          <a className={styles.active} href="/dashboard">
-            <span>Dashboard</span>
-          </a>
+      <a className={styles.active} href="/dashboard">
+      <span>Dashboard</span>
+      </a>
 
-          <a href="#">
-            <span>Agenda</span>
-          </a>
+     <a href="/agenda">
+    <span>Agenda</span>
+      </a>
 
-          <a href="#">
-            <span>Clientes</span>
-          </a>
+     <a href="#">
+      <span>Clientes</span>
+      </a>
 
-          <a href="#">
-            <span>Barbeiros</span>
-          </a>
+     <a href="#">
+       <span>Barbeiros</span>
+      </a>
 
-          <a href="#">
-            <span>Serviços</span>
-          </a>
+      <a href="#">
+       <span>Serviços</span>
+       </a>
 
-          <a href="#">
-            <span>Financeiro</span>
-          </a>
-        </nav>
+      <a href="#">
+       <span>Financeiro</span>
+         </a>
+       </nav>
 
         <div className={styles.sidebarFooter}>
           <span>© 2026</span>
