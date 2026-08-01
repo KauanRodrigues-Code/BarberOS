@@ -1,6 +1,37 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function Agenda() {
+  const [selectedDate, setSelectedDate] = useState(
+    new Date(2026, 6, 31)
+  );
+
+  function previousDay() {
+    setSelectedDate((currentDate) => {
+      const newDate = new Date(currentDate);
+      newDate.setDate(newDate.getDate() - 1);
+      return newDate;
+    });
+  }
+
+  function nextDay() {
+    setSelectedDate((currentDate) => {
+      const newDate = new Date(currentDate);
+      newDate.setDate(newDate.getDate() + 1);
+      return newDate;
+    });
+  }
+
+  function formatDate(date: Date) {
+    return new Intl.DateTimeFormat("pt-BR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }).format(date);
+  }
+
   return (
     <main className={styles.page}>
       <aside className={styles.sidebar}>
@@ -15,10 +46,10 @@ export default function Agenda() {
             Agenda
           </a>
 
-          <a href="#">Clientes</a>
-          <a href="#">Barbeiros</a>
-          <a href="#">Serviços</a>
-          <a href="#">Financeiro</a>
+          <a href="/clientes">Clientes</a>
+          <a href="/barbeiros">Barbeiros</a>
+          <a href="/servicos">Serviços</a>
+          <a href="/financeiro">Financeiro</a>
         </nav>
 
         <div className={styles.sidebarFooter}>
@@ -31,8 +62,12 @@ export default function Agenda() {
         <header className={styles.header}>
           <div>
             <span className={styles.welcome}>BarberOS</span>
+
             <h1>Agenda</h1>
-            <p>Gerencie os horários e agendamentos da sua barbearia.</p>
+
+            <p>
+              Gerencie os horários e agendamentos da sua barbearia.
+            </p>
           </div>
 
           <button className={styles.profile}>
@@ -42,19 +77,37 @@ export default function Agenda() {
 
         <section className={styles.toolbar}>
           <div className={styles.dateSelector}>
-            <button>‹</button>
+            <button
+              type="button"
+              onClick={previousDay}
+              aria-label="Dia anterior"
+            >
+              ‹
+            </button>
 
             <div>
-              <span>Hoje</span>
-              <strong>31 de Julho de 2026</strong>
+              <span>Agenda</span>
+
+              <strong>
+                {formatDate(selectedDate)}
+              </strong>
             </div>
 
-            <button>›</button>
+            <button
+              type="button"
+              onClick={nextDay}
+              aria-label="Próximo dia"
+            >
+              ›
+            </button>
           </div>
 
-          <button className={styles.newAppointment}>
+          <a
+            href="/agenda/novo"
+            className={styles.newAppointment}
+          >
             + Novo agendamento
-          </button>
+          </a>
         </section>
 
         <section className={styles.calendar}>
@@ -73,9 +126,13 @@ export default function Agenda() {
               <span>Corte + Barba</span>
             </div>
 
-            <span className={styles.barber}>Carlos</span>
+            <span className={styles.barber}>
+              Carlos
+            </span>
 
-            <span className={`${styles.status} ${styles.confirmed}`}>
+            <span
+              className={`${styles.status} ${styles.confirmed}`}
+            >
               Confirmado
             </span>
           </div>
@@ -88,9 +145,13 @@ export default function Agenda() {
               <span>Corte</span>
             </div>
 
-            <span className={styles.barber}>Lucas</span>
+            <span className={styles.barber}>
+              Lucas
+            </span>
 
-            <span className={`${styles.status} ${styles.pending}`}>
+            <span
+              className={`${styles.status} ${styles.pending}`}
+            >
               Aguardando
             </span>
           </div>
@@ -102,11 +163,16 @@ export default function Agenda() {
               <span>Horário disponível</span>
             </div>
 
-            <span className={styles.barber}>Carlos</span>
+            <span className={styles.barber}>
+              Carlos
+            </span>
 
-            <button className={styles.available}>
+            <a
+              href="/agenda/novo?horario=12:00"
+              className={styles.available}
+            >
               Agendar
-            </button>
+            </a>
           </div>
 
           <div className={styles.appointment}>
@@ -117,9 +183,13 @@ export default function Agenda() {
               <span>Corte + Barba</span>
             </div>
 
-            <span className={styles.barber}>Carlos</span>
+            <span className={styles.barber}>
+              Carlos
+            </span>
 
-            <span className={`${styles.status} ${styles.confirmed}`}>
+            <span
+              className={`${styles.status} ${styles.confirmed}`}
+            >
               Confirmado
             </span>
           </div>
@@ -131,11 +201,16 @@ export default function Agenda() {
               <span>Horário disponível</span>
             </div>
 
-            <span className={styles.barber}>Lucas</span>
+            <span className={styles.barber}>
+              Lucas
+            </span>
 
-            <button className={styles.available}>
+            <a
+              href="/agenda/novo?horario=15:30"
+              className={styles.available}
+            >
               Agendar
-            </button>
+            </a>
           </div>
         </section>
       </section>

@@ -9,30 +9,30 @@ export default function Dashboard() {
         </div>
 
         <nav>
-      <a className={styles.active} href="/dashboard">
-      <span>Dashboard</span>
-      </a>
+          <a className={styles.active} href="/dashboard">
+            <span>Dashboard</span>
+          </a>
 
-     <a href="/agenda">
-    <span>Agenda</span>
-      </a>
+          <a href="/agenda">
+            <span>Agenda</span>
+          </a>
 
-     <a href="#">
-      <span>Clientes</span>
-      </a>
+          <a href="/clientes">
+            <span>Clientes</span>
+          </a>
 
-     <a href="#">
-       <span>Barbeiros</span>
-      </a>
+          <a href="/barbeiros">
+            <span>Barbeiros</span>
+          </a>
 
-      <a href="#">
-       <span>Serviços</span>
-       </a>
+          <a href="/servicos">
+            <span>Serviços</span>
+          </a>
 
-      <a href="#">
-       <span>Financeiro</span>
-         </a>
-       </nav>
+          <a href="/financeiro">
+            <span>Financeiro</span>
+          </a>
+        </nav>
 
         <div className={styles.sidebarFooter}>
           <span>© 2026</span>
@@ -43,14 +43,21 @@ export default function Dashboard() {
       <section className={styles.content}>
         <header className={styles.header}>
           <div>
-            <span className={styles.welcome}>Bem-vindo de volta</span>
+            <span className={styles.welcome}>
+              Bem-vindo de volta
+            </span>
+
             <h1>Olá, Kauan 👋</h1>
+
             <p className={styles.date}>
               Aqui está o resumo da sua barbearia hoje.
             </p>
           </div>
 
-          <button className={styles.profile} aria-label="Abrir perfil">
+          <button
+            className={styles.profile}
+            aria-label="Abrir perfil"
+          >
             KR
           </button>
         </header>
@@ -59,25 +66,33 @@ export default function Dashboard() {
           <div className={styles.card}>
             <span>Agendamentos hoje</span>
             <strong>12</strong>
-            <small className={styles.positive}>↑ 8% comparado a ontem</small>
+            <small className={styles.positive}>
+              ↑ 8% comparado a ontem
+            </small>
           </div>
 
           <div className={styles.card}>
             <span>Clientes</span>
             <strong>48</strong>
-            <small className={styles.positive}>↑ 5 novos este mês</small>
+            <small className={styles.positive}>
+              ↑ 5 novos este mês
+            </small>
           </div>
 
           <div className={styles.card}>
             <span>Barbeiros</span>
             <strong>4</strong>
-            <small className={styles.neutral}>Equipe ativa</small>
+            <small className={styles.neutral}>
+              Equipe ativa
+            </small>
           </div>
 
           <div className={styles.card}>
             <span>Faturamento</span>
             <strong>R$ 1.280</strong>
-            <small className={styles.positive}>↑ 12% este mês</small>
+            <small className={styles.positive}>
+              ↑ 12% este mês
+            </small>
           </div>
         </section>
 
@@ -88,7 +103,12 @@ export default function Dashboard() {
               <h2>Próximos agendamentos</h2>
             </div>
 
-            <button>Ver agenda</button>
+            <a
+              href="/agenda"
+              className={styles.viewAgenda}
+            >
+              Ver agenda
+            </a>
           </div>
 
           <div className={styles.appointment}>
@@ -100,8 +120,13 @@ export default function Dashboard() {
             </div>
 
             <div className={styles.appointmentInfo}>
-              <span className={styles.barber}>Carlos</span>
-              <span className={`${styles.status} ${styles.confirmed}`}>
+              <span className={styles.barber}>
+                Carlos
+              </span>
+
+              <span
+                className={`${styles.status} ${styles.confirmed}`}
+              >
                 Confirmado
               </span>
             </div>
@@ -116,8 +141,13 @@ export default function Dashboard() {
             </div>
 
             <div className={styles.appointmentInfo}>
-              <span className={styles.barber}>Lucas</span>
-              <span className={`${styles.status} ${styles.pending}`}>
+              <span className={styles.barber}>
+                Lucas
+              </span>
+
+              <span
+                className={`${styles.status} ${styles.pending}`}
+              >
                 Aguardando
               </span>
             </div>
@@ -132,8 +162,13 @@ export default function Dashboard() {
             </div>
 
             <div className={styles.appointmentInfo}>
-              <span className={styles.barber}>Carlos</span>
-              <span className={`${styles.status} ${styles.confirmed}`}>
+              <span className={styles.barber}>
+                Carlos
+              </span>
+
+              <span
+                className={`${styles.status} ${styles.confirmed}`}
+              >
                 Confirmado
               </span>
             </div>

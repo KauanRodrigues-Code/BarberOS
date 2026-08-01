@@ -227,23 +227,41 @@
   letter-spacing: -0.3px;
 }
 
-.sectionHeader button {
+/* =========================
+   VER AGENDA
+========================= */
+
+.viewAgenda {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 9px;
   border: 1px solid rgba(212, 175, 55, 0.4);
   background: transparent;
   color: #d4af37;
-  padding: 10px 16px;
-  border-radius: 9px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
   transition:
     background 0.2s ease,
     transform 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.sectionHeader button:hover {
+.viewAgenda:hover {
   background: rgba(212, 175, 55, 0.08);
   border-color: rgba(212, 175, 55, 0.65);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.08);
+}
+
+.viewAgenda:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
 }
 
 /* =========================
@@ -383,7 +401,7 @@
     font-size: 18px;
   }
 
-  .sectionHeader button {
+  .viewAgenda {
     white-space: nowrap;
   }
 
@@ -427,7 +445,7 @@
     flex-direction: column;
   }
 
-  .sectionHeader button {
+  .viewAgenda {
     width: 100%;
   }
 

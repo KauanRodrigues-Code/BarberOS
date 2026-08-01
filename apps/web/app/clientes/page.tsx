@@ -17,9 +17,9 @@ export default function Clientes() {
             Clientes
           </a>
 
-          <a href="#">Barbeiros</a>
-          <a href="#">Serviços</a>
-          <a href="#">Financeiro</a>
+          <a href="/barbeiros">Barbeiros</a>
+          <a href="/servicos">Serviços</a>
+          <a href="/financeiro">Financeiro</a>
         </nav>
 
         <div className={styles.sidebarFooter}>
@@ -51,9 +51,9 @@ export default function Clientes() {
             />
           </div>
 
-          <button className={styles.newClient}>
-            + Novo cliente
-          </button>
+          <a href="/clientes/novo" className={styles.newClient}>
+             + Novo cliente
+            </a>
         </section>
 
         <section className={styles.clients}>
