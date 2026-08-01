@@ -69,12 +69,12 @@ export default function Barbeiros() {
         <section className={styles.barbers}>
           <div className={styles.barbersHeader}>
             <span>Barbeiro</span>
-            <span>Especialidade</span>
             <span>Atendimentos</span>
             <span>Status</span>
             <span>Ações</span>
           </div>
 
+          {/* Carlos */}
           <div className={styles.barber}>
             <div className={styles.barberInfo}>
               <div className={styles.avatar}>CA</div>
@@ -85,15 +85,13 @@ export default function Barbeiros() {
               </div>
             </div>
 
-            <span className={styles.specialty}>
-              Corte e Barba
-            </span>
-
             <span className={styles.attendances}>
               156 atendimentos
             </span>
 
-            <span className={`${styles.status} ${styles.activeStatus}`}>
+            <span
+              className={`${styles.status} ${styles.activeStatus}`}
+            >
               Ativo
             </span>
 
@@ -105,6 +103,7 @@ export default function Barbeiros() {
             </a>
           </div>
 
+          {/* Lucas */}
           <div className={styles.barber}>
             <div className={styles.barberInfo}>
               <div className={styles.avatar}>LS</div>
@@ -115,15 +114,13 @@ export default function Barbeiros() {
               </div>
             </div>
 
-            <span className={styles.specialty}>
-              Corte masculino
-            </span>
-
             <span className={styles.attendances}>
               98 atendimentos
             </span>
 
-            <span className={`${styles.status} ${styles.activeStatus}`}>
+            <span
+              className={`${styles.status} ${styles.activeStatus}`}
+            >
               Ativo
             </span>
 
@@ -135,6 +132,7 @@ export default function Barbeiros() {
             </a>
           </div>
 
+          {/* Rafael */}
           <div className={styles.barber}>
             <div className={styles.barberInfo}>
               <div className={styles.avatar}>RM</div>
@@ -145,15 +143,13 @@ export default function Barbeiros() {
               </div>
             </div>
 
-            <span className={styles.specialty}>
-              Barba e acabamento
-            </span>
-
             <span className={styles.attendances}>
               64 atendimentos
             </span>
 
-            <span className={`${styles.status} ${styles.activeStatus}`}>
+            <span
+              className={`${styles.status} ${styles.activeStatus}`}
+            >
               Ativo
             </span>
 
@@ -165,6 +161,7 @@ export default function Barbeiros() {
             </a>
           </div>
 
+          {/* João */}
           <div className={styles.barber}>
             <div className={styles.barberInfo}>
               <div className={styles.avatar}>JF</div>
@@ -175,15 +172,13 @@ export default function Barbeiros() {
               </div>
             </div>
 
-            <span className={styles.specialty}>
-              Corte e finalização
-            </span>
-
             <span className={styles.attendances}>
               41 atendimentos
             </span>
 
-            <span className={`${styles.status} ${styles.inactiveStatus}`}>
+            <span
+              className={`${styles.status} ${styles.inactiveStatus}`}
+            >
               Folga
             </span>
 

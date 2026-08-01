@@ -72,7 +72,6 @@ export default function Servicos() {
             <span>Duração</span>
             <span>Preço</span>
             <span>Status</span>
-            <span>Ações</span>
           </div>
 
           <div className={styles.service}>
@@ -98,13 +97,6 @@ export default function Servicos() {
             >
               Ativo
             </span>
-
-            <a
-              href="/servicos/corte-masculino"
-              className={styles.action}
-            >
-              Ver serviço
-            </a>
           </div>
 
           <div className={styles.service}>
@@ -130,13 +122,6 @@ export default function Servicos() {
             >
               Ativo
             </span>
-
-            <a
-              href="/servicos/barba"
-              className={styles.action}
-            >
-              Ver serviço
-            </a>
           </div>
 
           <div className={styles.service}>
@@ -162,13 +147,6 @@ export default function Servicos() {
             >
               Ativo
             </span>
-
-            <a
-              href="/servicos/corte-barba"
-              className={styles.action}
-            >
-              Ver serviço
-            </a>
           </div>
 
           <div className={styles.service}>
@@ -194,13 +172,6 @@ export default function Servicos() {
             >
               Inativo
             </span>
-
-            <a
-              href="/servicos/pezinho"
-              className={styles.action}
-            >
-              Ver serviço
-            </a>
           </div>
         </section>
       </section>

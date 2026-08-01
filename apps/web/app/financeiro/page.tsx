@@ -42,17 +42,34 @@ export default function Financeiro() {
             </p>
           </div>
 
-          <button className={styles.profile}>
-            KR
-          </button>
+          <div className={styles.headerActions}>
+            <a
+              href="/financeiro/ia"
+              className={styles.aiButton}
+            >
+              <span>✦</span>
+              Falar com IA
+            </a>
+
+            <button
+              className={styles.profile}
+              aria-label="Abrir perfil"
+            >
+              KR
+            </button>
+          </div>
         </header>
 
-        {/* RESUMO */}
+        {/* =========================
+            RESUMO
+        ========================= */}
 
         <section className={styles.stats}>
           <div className={styles.card}>
             <span>Faturamento este mês</span>
+
             <strong>R$ 5.840</strong>
+
             <small className={styles.positive}>
               ↑ 12% comparado ao mês anterior
             </small>
@@ -60,7 +77,9 @@ export default function Financeiro() {
 
           <div className={styles.card}>
             <span>Faturamento hoje</span>
+
             <strong>R$ 420</strong>
+
             <small className={styles.positive}>
               ↑ 8% comparado a ontem
             </small>
@@ -68,7 +87,9 @@ export default function Financeiro() {
 
           <div className={styles.card}>
             <span>Atendimentos</span>
+
             <strong>86</strong>
+
             <small className={styles.neutral}>
               Este mês
             </small>
@@ -76,25 +97,35 @@ export default function Financeiro() {
 
           <div className={styles.card}>
             <span>Ticket médio</span>
+
             <strong>R$ 67,90</strong>
+
             <small className={styles.positive}>
               ↑ 4% este mês
             </small>
           </div>
         </section>
 
-        {/* MOVIMENTAÇÕES */}
+        {/* =========================
+            MOVIMENTAÇÕES
+        ========================= */}
 
         <section className={styles.transactions}>
           <div className={styles.sectionHeader}>
             <div>
-              <span className={styles.welcome}>Movimentações</span>
+              <span className={styles.welcome}>
+                Movimentações
+              </span>
+
               <h2>Últimos pagamentos</h2>
             </div>
 
-            <button className={styles.filter}>
-              Este mês
-            </button>
+            <select className={styles.filter} defaultValue="mes">
+            <option value="hoje">Hoje</option>
+            <option value="semana">Esta semana</option>
+            <option value="mes">Este mês</option>
+            <option value="anterior">Mês anterior</option>
+           </select>
           </div>
 
           <div className={styles.transactionHeader}>
@@ -105,9 +136,12 @@ export default function Financeiro() {
             <span>Valor</span>
           </div>
 
+          {/* PAGAMENTO 1 */}
+
           <div className={styles.transaction}>
             <div className={styles.client}>
               <strong>João Silva</strong>
+
               <span>Cliente</span>
             </div>
 
@@ -128,9 +162,12 @@ export default function Financeiro() {
             </strong>
           </div>
 
+          {/* PAGAMENTO 2 */}
+
           <div className={styles.transaction}>
             <div className={styles.client}>
               <strong>Pedro Santos</strong>
+
               <span>Cliente</span>
             </div>
 
@@ -151,9 +188,12 @@ export default function Financeiro() {
             </strong>
           </div>
 
+          {/* PAGAMENTO 3 */}
+
           <div className={styles.transaction}>
             <div className={styles.client}>
               <strong>Gabriel Souza</strong>
+
               <span>Cliente</span>
             </div>
 
@@ -174,9 +214,12 @@ export default function Financeiro() {
             </strong>
           </div>
 
+          {/* PAGAMENTO 4 */}
+
           <div className={styles.transaction}>
             <div className={styles.client}>
               <strong>Lucas Oliveira</strong>
+
               <span>Cliente</span>
             </div>
 

@@ -11,7 +11,9 @@ export default function Agenda() {
   function previousDay() {
     setSelectedDate((currentDate) => {
       const newDate = new Date(currentDate);
+
       newDate.setDate(newDate.getDate() - 1);
+
       return newDate;
     });
   }
@@ -19,7 +21,9 @@ export default function Agenda() {
   function nextDay() {
     setSelectedDate((currentDate) => {
       const newDate = new Date(currentDate);
+
       newDate.setDate(newDate.getDate() + 1);
+
       return newDate;
     });
   }
@@ -34,49 +38,87 @@ export default function Agenda() {
 
   return (
     <main className={styles.page}>
+
+      {/* SIDEBAR */}
+
       <aside className={styles.sidebar}>
         <div className={styles.logo}>
           Barber<span>OS</span>
         </div>
 
         <nav>
-          <a href="/dashboard">Dashboard</a>
+          <a href="/dashboard">
+            Dashboard
+          </a>
 
-          <a className={styles.active} href="/agenda">
+          <a
+            className={styles.active}
+            href="/agenda"
+          >
             Agenda
           </a>
 
-          <a href="/clientes">Clientes</a>
-          <a href="/barbeiros">Barbeiros</a>
-          <a href="/servicos">Serviços</a>
-          <a href="/financeiro">Financeiro</a>
+          <a href="/clientes">
+            Clientes
+          </a>
+
+          <a href="/barbeiros">
+            Barbeiros
+          </a>
+
+          <a href="/servicos">
+            Serviços
+          </a>
+
+          <a href="/financeiro">
+            Financeiro
+          </a>
         </nav>
 
         <div className={styles.sidebarFooter}>
           <span>© 2026</span>
-          <strong>Kauan Rodrigues</strong>
+
+          <strong>
+            Kauan Rodrigues
+          </strong>
         </div>
       </aside>
 
+      {/* CONTEÚDO */}
+
       <section className={styles.content}>
+
+        {/* HEADER */}
+
         <header className={styles.header}>
           <div>
-            <span className={styles.welcome}>BarberOS</span>
+            <span className={styles.welcome}>
+              BarberOS
+            </span>
 
-            <h1>Agenda</h1>
+            <h1>
+              Agenda
+            </h1>
 
             <p>
               Gerencie os horários e agendamentos da sua barbearia.
             </p>
           </div>
 
-          <button className={styles.profile}>
+          <button
+            className={styles.profile}
+            aria-label="Abrir perfil"
+          >
             KR
           </button>
         </header>
 
+        {/* TOOLBAR */}
+
         <section className={styles.toolbar}>
+
           <div className={styles.dateSelector}>
+
             <button
               type="button"
               onClick={previousDay}
@@ -86,7 +128,9 @@ export default function Agenda() {
             </button>
 
             <div>
-              <span>Agenda</span>
+              <span>
+                Agenda
+              </span>
 
               <strong>
                 {formatDate(selectedDate)}
@@ -100,6 +144,7 @@ export default function Agenda() {
             >
               ›
             </button>
+
           </div>
 
           <a
@@ -108,26 +153,51 @@ export default function Agenda() {
           >
             + Novo agendamento
           </a>
+
         </section>
 
+        {/* CALENDÁRIO */}
+
         <section className={styles.calendar}>
+
           <div className={styles.calendarHeader}>
-            <span>Horário</span>
-            <span>Agendamento</span>
-            <span>Barbeiro</span>
-            <span>Status</span>
+            <span>
+              Horário
+            </span>
+
+            <span>
+              Agendamento
+            </span>
+
+            <span>
+              Barbeiro responsável
+            </span>
+
+            <span>
+              Status
+            </span>
           </div>
 
+          {/* 09:00 */}
+
           <div className={styles.appointment}>
-            <div className={styles.time}>09:00</div>
+
+            <div className={styles.time}>
+              09:00
+            </div>
 
             <div className={styles.client}>
-              <strong>João Silva</strong>
-              <span>Corte + Barba</span>
+              <strong>
+                João Silva
+              </strong>
+
+              <span>
+                Corte + Barba
+              </span>
             </div>
 
             <span className={styles.barber}>
-              Carlos
+              Carlos Almeida
             </span>
 
             <span
@@ -135,18 +205,29 @@ export default function Agenda() {
             >
               Confirmado
             </span>
+
           </div>
 
+          {/* 10:30 */}
+
           <div className={styles.appointment}>
-            <div className={styles.time}>10:30</div>
+
+            <div className={styles.time}>
+              10:30
+            </div>
 
             <div className={styles.client}>
-              <strong>Pedro Santos</strong>
-              <span>Corte</span>
+              <strong>
+                Pedro Santos
+              </strong>
+
+              <span>
+                Corte
+              </span>
             </div>
 
             <span className={styles.barber}>
-              Lucas
+              Lucas Santos
             </span>
 
             <span
@@ -154,17 +235,25 @@ export default function Agenda() {
             >
               Aguardando
             </span>
+
           </div>
 
+          {/* 12:00 */}
+
           <div className={styles.appointment}>
-            <div className={styles.time}>12:00</div>
+
+            <div className={styles.time}>
+              12:00
+            </div>
 
             <div className={styles.empty}>
-              <span>Horário disponível</span>
+              <span>
+                Horário disponível
+              </span>
             </div>
 
             <span className={styles.barber}>
-              Carlos
+              Carlos Almeida
             </span>
 
             <a
@@ -173,18 +262,29 @@ export default function Agenda() {
             >
               Agendar
             </a>
+
           </div>
 
+          {/* 14:00 */}
+
           <div className={styles.appointment}>
-            <div className={styles.time}>14:00</div>
+
+            <div className={styles.time}>
+              14:00
+            </div>
 
             <div className={styles.client}>
-              <strong>Gabriel Souza</strong>
-              <span>Corte + Barba</span>
+              <strong>
+                Gabriel Souza
+              </strong>
+
+              <span>
+                Corte + Barba
+              </span>
             </div>
 
             <span className={styles.barber}>
-              Carlos
+              Carlos Almeida
             </span>
 
             <span
@@ -192,17 +292,25 @@ export default function Agenda() {
             >
               Confirmado
             </span>
+
           </div>
 
+          {/* 15:30 */}
+
           <div className={styles.appointment}>
-            <div className={styles.time}>15:30</div>
+
+            <div className={styles.time}>
+              15:30
+            </div>
 
             <div className={styles.empty}>
-              <span>Horário disponível</span>
+              <span>
+                Horário disponível
+              </span>
             </div>
 
             <span className={styles.barber}>
-              Lucas
+              Lucas Santos
             </span>
 
             <a
@@ -211,8 +319,11 @@ export default function Agenda() {
             >
               Agendar
             </a>
+
           </div>
+
         </section>
+
       </section>
     </main>
   );
