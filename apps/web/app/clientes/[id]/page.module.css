@@ -1,0 +1,447 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  background: #050505;
+  color: #fff;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  padding: 35px 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  background: #080808;
+  flex-shrink: 0;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 800;
+  margin-bottom: 55px;
+  padding-left: 12px;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: #d4af37;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar nav a {
+  color: #777;
+  text-decoration: none;
+  padding: 13px 14px;
+  border-radius: 10px;
+  transition: 0.2s ease;
+}
+
+.sidebar nav a:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(3px);
+}
+
+.sidebar nav .active {
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.sidebarFooter {
+  margin-top: auto;
+  padding: 15px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #555;
+  font-size: 12px;
+}
+
+.sidebarFooter strong {
+  color: #888;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  flex: 1;
+  width: 100%;
+  max-width: 1500px;
+  padding: 45px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.welcome {
+  color: #777;
+  font-size: 14px;
+}
+
+.header h1 {
+  margin-top: 6px;
+  font-size: 32px;
+  letter-spacing: -0.8px;
+}
+
+.header p {
+  margin-top: 8px;
+  color: #555;
+  font-size: 14px;
+}
+
+.profile {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.1);
+  color: #d4af37;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================
+   BACK
+========================= */
+
+.back {
+  display: inline-block;
+  margin-bottom: 22px;
+  color: #888;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s ease;
+}
+
+.back:hover {
+  color: #d4af37;
+}
+
+/* =========================
+   PROFILE CARD
+========================= */
+
+.profileCard {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 28px;
+  background: linear-gradient(
+    145deg,
+    #101010,
+    #0b0b0b
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #d4af37;
+  font-size: 22px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.clientMain {
+  flex: 1;
+}
+
+.label {
+  color: #777;
+  font-size: 13px;
+}
+
+.clientMain h2 {
+  margin-top: 5px;
+  font-size: 25px;
+}
+
+.clientMain p {
+  margin-top: 5px;
+  color: #666;
+  font-size: 13px;
+}
+
+.edit {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  background: transparent;
+  color: #d4af37;
+  padding: 11px 18px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.edit:hover {
+  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
+/* =========================
+   INFO
+========================= */
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.infoCard {
+  padding: 22px;
+  background: linear-gradient(
+    145deg,
+    #101010,
+    #0b0b0b
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+}
+
+.infoCard span {
+  display: block;
+  color: #777;
+  font-size: 13px;
+}
+
+.infoCard strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+/* =========================
+   HISTORY
+========================= */
+
+.history {
+  background: linear-gradient(
+    145deg,
+    #101010,
+    #0b0b0b
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.sectionHeader h2 {
+  margin-top: 6px;
+  font-size: 21px;
+}
+
+.newAppointment {
+  padding: 10px 16px;
+  border-radius: 9px;
+  background: #d4af37;
+  color: #050505;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.newAppointment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+}
+
+/* =========================
+   HISTORY TABLE
+========================= */
+
+.historyHeader,
+.historyItem {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 110px;
+  align-items: center;
+  gap: 20px;
+}
+
+.historyHeader {
+  padding: 0 5px 14px;
+  color: #555;
+  font-size: 12px;
+}
+
+.historyItem {
+  padding: 18px 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #888;
+  font-size: 13px;
+}
+
+.historyItem strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+}
+
+.historyItem small {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+}
+
+.status {
+  min-width: 82px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.confirmed {
+  color: #78b482;
+  background: rgba(120, 180, 130, 0.08);
+  border: 1px solid rgba(120, 180, 130, 0.15);
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1100px) {
+  .sidebar {
+    width: 220px;
+  }
+
+  .content {
+    padding: 35px;
+  }
+
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .sidebar {
+    display: none;
+  }
+
+  .content {
+    padding: 25px 18px;
+  }
+
+  .header h1 {
+    font-size: 27px;
+  }
+
+  .profileCard {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .clientMain {
+    min-width: calc(100% - 95px);
+  }
+
+  .edit {
+    width: 100%;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .history {
+    padding: 20px;
+  }
+
+  .sectionHeader {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .historyHeader {
+    display: none;
+  }
+
+  .historyItem {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 18px 3px;
+  }
+
+  .status {
+    width: fit-content;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 430px) {
+  .content {
+    padding: 22px 14px;
+  }
+
+  .profileCard {
+    padding: 22px;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 19px;
+  }
+
+  .clientMain h2 {
+    font-size: 21px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+  }
+
+  .newAppointment {
+    width: 100%;
+    text-align: center;
+  }
+
+  .historyItem {
+    grid-template-columns: 1fr;
+  }
+}

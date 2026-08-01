@@ -32,7 +32,9 @@ export default function Clientes() {
         <header className={styles.header}>
           <div>
             <span className={styles.welcome}>BarberOS</span>
+
             <h1>Clientes</h1>
+
             <p>
               Gerencie os clientes da sua barbearia.
             </p>
@@ -51,9 +53,12 @@ export default function Clientes() {
             />
           </div>
 
-          <a href="/clientes/novo" className={styles.newClient}>
-             + Novo cliente
-            </a>
+          <a
+            href="/clientes/novo"
+            className={styles.newClient}
+          >
+            + Novo cliente
+          </a>
         </section>
 
         <section className={styles.clients}>
@@ -64,6 +69,7 @@ export default function Clientes() {
             <span>Ações</span>
           </div>
 
+          {/* João */}
           <div className={styles.client}>
             <div className={styles.clientInfo}>
               <div className={styles.avatar}>JS</div>
@@ -82,11 +88,15 @@ export default function Clientes() {
               Hoje
             </span>
 
-            <button className={styles.action}>
+            <a
+              href="/clientes/joao"
+              className={styles.action}
+            >
               Ver cliente
-            </button>
+            </a>
           </div>
 
+          {/* Pedro */}
           <div className={styles.client}>
             <div className={styles.clientInfo}>
               <div className={styles.avatar}>PS</div>
@@ -105,11 +115,15 @@ export default function Clientes() {
               28/07/2026
             </span>
 
-            <button className={styles.action}>
+            <a
+              href="/clientes/pedro"
+              className={styles.action}
+            >
               Ver cliente
-            </button>
+            </a>
           </div>
 
+          {/* Gabriel */}
           <div className={styles.client}>
             <div className={styles.clientInfo}>
               <div className={styles.avatar}>GS</div>
@@ -128,9 +142,12 @@ export default function Clientes() {
               25/07/2026
             </span>
 
-            <button className={styles.action}>
+            <a
+              href="/clientes/gabriel"
+              className={styles.action}
+            >
               Ver cliente
-            </button>
+            </a>
           </div>
         </section>
       </section>
