@@ -1,9 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 
-export default function NovoAgendamento() {
+function AgendaContent() {
   const searchParams = useSearchParams();
 
   const horario = searchParams.get("horario") || "";
@@ -25,8 +26,6 @@ export default function NovoAgendamento() {
         </div>
 
         <form className={styles.form}>
-          {/* CLIENTE */}
-
           <div className={styles.field}>
             <label htmlFor="client">
               Cliente
@@ -54,8 +53,6 @@ export default function NovoAgendamento() {
             </select>
           </div>
 
-          {/* DATA + HORÁRIO */}
-
           <div className={styles.row}>
             <div className={styles.field}>
               <label htmlFor="date">
@@ -80,8 +77,6 @@ export default function NovoAgendamento() {
               />
             </div>
           </div>
-
-          {/* SERVIÇO */}
 
           <div className={styles.field}>
             <label htmlFor="service">
@@ -110,8 +105,6 @@ export default function NovoAgendamento() {
             </select>
           </div>
 
-          {/* BARBEIRO */}
-
           <div className={styles.field}>
             <label htmlFor="barber">
               Barbeiro
@@ -135,8 +128,6 @@ export default function NovoAgendamento() {
             </select>
           </div>
 
-          {/* AÇÕES */}
-
           <div className={styles.actions}>
             <a
               href="/agenda"
@@ -159,5 +150,13 @@ export default function NovoAgendamento() {
         </footer>
       </section>
     </main>
+  );
+}
+
+export default function Agenda() {
+  return (
+    <Suspense fallback={null}>
+      <AgendaContent />
+    </Suspense>
   );
 }
