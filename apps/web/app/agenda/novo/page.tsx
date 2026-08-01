@@ -5,7 +5,9 @@ import styles from "./page.module.css";
 
 export default function NovoAgendamento() {
   const searchParams = useSearchParams();
+
   const horario = searchParams.get("horario") || "";
+  const cliente = searchParams.get("cliente") || "";
 
   return (
     <main className={styles.page}>
@@ -20,19 +22,20 @@ export default function NovoAgendamento() {
               Crie um novo horário para sua barbearia.
             </p>
           </div>
-
-          <a href="/agenda" className={styles.back}>
-            Voltar
-          </a>
         </div>
 
         <form className={styles.form}>
+          {/* CLIENTE */}
+
           <div className={styles.field}>
             <label htmlFor="client">
               Cliente
             </label>
 
-            <select id="client" defaultValue="">
+            <select
+              id="client"
+              defaultValue={cliente}
+            >
               <option value="" disabled>
                 Selecione o cliente
               </option>
@@ -50,6 +53,8 @@ export default function NovoAgendamento() {
               </option>
             </select>
           </div>
+
+          {/* DATA + HORÁRIO */}
 
           <div className={styles.row}>
             <div className={styles.field}>
@@ -76,12 +81,17 @@ export default function NovoAgendamento() {
             </div>
           </div>
 
+          {/* SERVIÇO */}
+
           <div className={styles.field}>
             <label htmlFor="service">
               Serviço
             </label>
 
-            <select id="service" defaultValue="">
+            <select
+              id="service"
+              defaultValue=""
+            >
               <option value="" disabled>
                 Selecione o serviço
               </option>
@@ -100,12 +110,17 @@ export default function NovoAgendamento() {
             </select>
           </div>
 
+          {/* BARBEIRO */}
+
           <div className={styles.field}>
             <label htmlFor="barber">
               Barbeiro
             </label>
 
-            <select id="barber" defaultValue="">
+            <select
+              id="barber"
+              defaultValue=""
+            >
               <option value="" disabled>
                 Selecione o barbeiro
               </option>
@@ -119,6 +134,8 @@ export default function NovoAgendamento() {
               </option>
             </select>
           </div>
+
+          {/* AÇÕES */}
 
           <div className={styles.actions}>
             <a

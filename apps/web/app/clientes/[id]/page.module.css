@@ -43,7 +43,10 @@
   text-decoration: none;
   padding: 13px 14px;
   border-radius: 10px;
-  transition: 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .sidebar nav a:hover {
@@ -55,6 +58,11 @@
 .sidebar nav .active {
   color: #d4af37;
   background: rgba(212, 175, 55, 0.1);
+}
+
+.sidebar nav .active:hover {
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.14);
 }
 
 .sidebarFooter {
@@ -116,6 +124,16 @@
   color: #d4af37;
   font-weight: 700;
   cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.profile:hover {
+  transform: translateY(-2px);
+  background: rgba(212, 175, 55, 0.16);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.12);
 }
 
 /* =========================
@@ -128,7 +146,7 @@
   color: #888;
   text-decoration: none;
   font-size: 14px;
-  transition: 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .back:hover {
@@ -189,21 +207,6 @@
   font-size: 13px;
 }
 
-.edit {
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  background: transparent;
-  color: #d4af37;
-  padding: 11px 18px;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: 0.2s ease;
-}
-
-.edit:hover {
-  background: rgba(212, 175, 55, 0.08);
-  border-color: rgba(212, 175, 55, 0.7);
-}
-
 /* =========================
    INFO
 ========================= */
@@ -224,6 +227,14 @@
   );
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 15px;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.infoCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 175, 55, 0.18);
 }
 
 .infoCard span {
@@ -273,7 +284,9 @@
   text-decoration: none;
   font-size: 14px;
   font-weight: 700;
-  transition: 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .newAppointment:hover {
@@ -304,6 +317,11 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   color: #888;
   font-size: 13px;
+  transition: background 0.2s ease;
+}
+
+.historyItem:hover {
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .historyItem strong {
@@ -317,6 +335,10 @@
   margin-top: 4px;
   color: #666;
 }
+
+/* =========================
+   STATUS
+========================= */
 
 .status {
   min-width: 82px;
@@ -364,6 +386,10 @@
     padding: 25px 18px;
   }
 
+  .header {
+    margin-bottom: 25px;
+  }
+
   .header h1 {
     font-size: 27px;
   }
@@ -375,10 +401,6 @@
 
   .clientMain {
     min-width: calc(100% - 95px);
-  }
-
-  .edit {
-    width: 100%;
   }
 
   .infoGrid {

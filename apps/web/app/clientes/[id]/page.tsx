@@ -18,7 +18,9 @@ export default function Cliente() {
           </a>
 
           <a href="/barbeiros">Barbeiros</a>
+
           <a href="/servicos">Serviços</a>
+
           <a href="/financeiro">Financeiro</a>
         </nav>
 
@@ -45,9 +47,13 @@ export default function Cliente() {
           </button>
         </header>
 
+        {/* VOLTAR PARA CLIENTES */}
+
         <a href="/clientes" className={styles.back}>
           ← Voltar para clientes
         </a>
+
+        {/* PERFIL DO CLIENTE */}
 
         <section className={styles.profileCard}>
           <div className={styles.avatar}>
@@ -65,33 +71,45 @@ export default function Cliente() {
               Cliente desde 2026
             </p>
           </div>
-
-          <button className={styles.edit}>
-            Editar cliente
-          </button>
         </section>
+
+        {/* INFORMAÇÕES */}
 
         <section className={styles.infoGrid}>
           <div className={styles.infoCard}>
             <span>Telefone</span>
-            <strong>(11) 99999-9999</strong>
+
+            <strong>
+              (11) 99999-9999
+            </strong>
           </div>
 
           <div className={styles.infoCard}>
             <span>Email</span>
-            <strong>joao@email.com</strong>
+
+            <strong>
+              joao@email.com
+            </strong>
           </div>
 
           <div className={styles.infoCard}>
             <span>Último atendimento</span>
-            <strong>Hoje</strong>
+
+            <strong>
+              Hoje
+            </strong>
           </div>
 
           <div className={styles.infoCard}>
             <span>Total de atendimentos</span>
-            <strong>24</strong>
+
+            <strong>
+              24
+            </strong>
           </div>
         </section>
+
+        {/* HISTÓRICO */}
 
         <section className={styles.history}>
           <div className={styles.sectionHeader}>
@@ -100,11 +118,13 @@ export default function Cliente() {
                 Histórico
               </span>
 
-              <h2>Últimos atendimentos</h2>
+              <h2>
+                Últimos atendimentos
+              </h2>
             </div>
 
             <a
-              href="/agenda/novo"
+              href="/agenda/novo?cliente=joao"
               className={styles.newAppointment}
             >
               + Novo agendamento
@@ -117,6 +137,8 @@ export default function Cliente() {
             <span>Barbeiro</span>
             <span>Status</span>
           </div>
+
+          {/* ATENDIMENTO 1 */}
 
           <div className={styles.historyItem}>
             <span>31/07/2026</span>
@@ -135,6 +157,8 @@ export default function Cliente() {
             </span>
           </div>
 
+          {/* ATENDIMENTO 2 */}
+
           <div className={styles.historyItem}>
             <span>24/07/2026</span>
 
@@ -151,6 +175,8 @@ export default function Cliente() {
               Concluído
             </span>
           </div>
+
+          {/* ATENDIMENTO 3 */}
 
           <div className={styles.historyItem}>
             <span>17/07/2026</span>

@@ -54,31 +54,6 @@
   font-size: 14px;
 }
 
-.back {
-  height: 40px;
-  min-width: 70px;
-  padding: 0 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 9px;
-  color: #888;
-  background: transparent;
-  font-family: inherit;
-  font-size: 13px;
-  text-decoration: none;
-  transition: 0.2s ease;
-}
-
-.back:hover {
-  color: #d4af37;
-  border-color: rgba(212, 175, 55, 0.35);
-  background: rgba(212, 175, 55, 0.04);
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -212,10 +187,6 @@
 
   .header {
     flex-direction: column;
-  }
-
-  .back {
-    align-self: flex-start;
   }
 
   .row {
