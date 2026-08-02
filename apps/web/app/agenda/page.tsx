@@ -1,162 +1,216 @@
 "use client";
 
-import { Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import styles from "./page.module.css";
 
-function NovoAgendamentoForm() {
-  const searchParams = useSearchParams();
+export default function Agenda() {
+  const [dataAtual, setDataAtual] = useState(
+    new Date(2026, 7, 1)
+  );
 
-  const horario = searchParams.get("horario") || "";
-  const cliente = searchParams.get("cliente") || "";
+  function mudarDia(dias: number) {
+    setDataAtual((data) => {
+      const novaData = new Date(data);
+      novaData.setDate(novaData.getDate() + dias);
+      return novaData;
+    });
+  }
+
+  function formatarData(data: Date) {
+    return new Intl.DateTimeFormat("pt-BR", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(data);
+  }
 
   return (
     <main className={styles.page}>
-      <section className={styles.card}>
-        <div className={styles.header}>
-          <div>
-            <span>Novo agendamento</span>
-
-            <h1>Agendar atendimento</h1>
-
-            <p>
-              Crie um novo horário para sua barbearia.
-            </p>
-          </div>
+      <aside className={styles.sidebar}>
+        <div className={styles.logo}>
+          Barber<span>OS</span>
         </div>
 
-        <form className={styles.form}>
-          <div className={styles.field}>
-            <label htmlFor="client">
-              Cliente
-            </label>
+        <nav>
+          <a href="/dashboard">Dashboard</a>
 
-            <select
-              id="client"
-              defaultValue={cliente}
-            >
-              <option value="" disabled>
-                Selecione o cliente
-              </option>
+          <a href="/agenda" className={styles.active}>
+            Agenda
+          </a>
 
-              <option value="joao">
-                João Silva
-              </option>
+          <a href="/clientes">Clientes</a>
+          <a href="/barbeiros">Barbeiros</a>
+          <a href="/servicos">Serviços</a>
+          <a href="/financeiro">Financeiro</a>
+        </nav>
 
-              <option value="pedro">
-                Pedro Santos
-              </option>
+        <div className={styles.sidebarFooter}>
+          <strong>BarberOS</strong>
+          <span>© 2026 Kauan Rodrigues</span>
+        </div>
+      </aside>
 
-              <option value="gabriel">
-                Gabriel Souza
-              </option>
-            </select>
+      <section className={styles.content}>
+        <header className={styles.header}>
+          <div>
+            <span className={styles.welcome}>
+              Gestão da barbearia
+            </span>
+
+            <h1>Agenda</h1>
+
+            <p>
+              Acompanhe os atendimentos e horários do dia.
+            </p>
           </div>
 
-          <div className={styles.row}>
-            <div className={styles.field}>
-              <label htmlFor="date">
-                Data
-              </label>
+          <button
+            className={styles.profile}
+            type="button"
+          >
+            K
+          </button>
+        </header>
 
-              <input
-                id="date"
-                type="date"
-              />
+        <div className={styles.toolbar}>
+          <div className={styles.dateSelector}>
+            <button
+              type="button"
+              onClick={() => mudarDia(-1)}
+              aria-label="Dia anterior"
+            >
+              ‹
+            </button>
+
+            <div>
+              <span>Data selecionada</span>
+
+              <strong>
+                {formatarData(dataAtual)}
+              </strong>
             </div>
-
-            <div className={styles.field}>
-              <label htmlFor="time">
-                Horário
-              </label>
-
-              <input
-                id="time"
-                type="time"
-                defaultValue={horario}
-              />
-            </div>
-          </div>
-
-          <div className={styles.field}>
-            <label htmlFor="service">
-              Serviço
-            </label>
-
-            <select
-              id="service"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Selecione o serviço
-              </option>
-
-              <option value="corte">
-                Corte
-              </option>
-
-              <option value="barba">
-                Barba
-              </option>
-
-              <option value="corte-barba">
-                Corte + Barba
-              </option>
-            </select>
-          </div>
-
-          <div className={styles.field}>
-            <label htmlFor="barber">
-              Barbeiro
-            </label>
-
-            <select
-              id="barber"
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Selecione o barbeiro
-              </option>
-
-              <option value="carlos">
-                Carlos
-              </option>
-
-              <option value="lucas">
-                Lucas
-              </option>
-            </select>
-          </div>
-
-          <div className={styles.actions}>
-            <a
-              href="/agenda"
-              className={styles.cancel}
-            >
-              Cancelar
-            </a>
 
             <button
-              type="submit"
-              className={styles.submit}
+              type="button"
+              onClick={() => mudarDia(1)}
+              aria-label="Próximo dia"
             >
-              Criar agendamento
+              ›
             </button>
           </div>
-        </form>
 
-        <footer>
-          © 2026 Kauan Rodrigues
-        </footer>
+          <a
+            href="/agenda/novo"
+            className={styles.newAppointment}
+          >
+            + Novo agendamento
+          </a>
+        </div>
+
+        <div className={styles.calendar}>
+          <div className={styles.calendarHeader}>
+            <span>Horário</span>
+            <span>Cliente</span>
+            <span>Barbeiro</span>
+            <span>Status</span>
+          </div>
+
+          <div className={styles.appointment}>
+            <span className={styles.time}>09:00</span>
+
+            <div className={styles.client}>
+              <strong>João Silva</strong>
+              <span>Corte + Barba</span>
+            </div>
+
+            <span className={styles.barber}>
+              Carlos
+            </span>
+
+            <span
+              className={`${styles.status} ${styles.confirmed}`}
+            >
+              Confirmado
+            </span>
+          </div>
+
+          <div className={styles.appointment}>
+            <span className={styles.time}>10:00</span>
+
+            <div className={styles.client}>
+              <strong>Pedro Santos</strong>
+              <span>Corte</span>
+            </div>
+
+            <span className={styles.barber}>
+              Lucas
+            </span>
+
+            <span
+              className={`${styles.status} ${styles.pending}`}
+            >
+              Pendente
+            </span>
+          </div>
+
+          <div className={styles.appointment}>
+            <span className={styles.time}>11:00</span>
+
+            <div className={styles.empty}>
+              <span>Horário disponível</span>
+            </div>
+
+            <span className={styles.barber}>
+              Carlos
+            </span>
+
+            <a
+              href="/agenda/novo?horario=11:00"
+              className={styles.available}
+            >
+              Agendar
+            </a>
+          </div>
+
+          <div className={styles.appointment}>
+            <span className={styles.time}>13:00</span>
+
+            <div className={styles.client}>
+              <strong>Gabriel Souza</strong>
+              <span>Barba</span>
+            </div>
+
+            <span className={styles.barber}>
+              Lucas
+            </span>
+
+            <span
+              className={`${styles.status} ${styles.confirmed}`}
+            >
+              Confirmado
+            </span>
+          </div>
+
+          <div className={styles.appointment}>
+            <span className={styles.time}>14:00</span>
+
+            <div className={styles.empty}>
+              <span>Horário disponível</span>
+            </div>
+
+            <span className={styles.barber}>
+              Carlos
+            </span>
+
+            <a
+              href="/agenda/novo?horario=14:00"
+              className={styles.available}
+            >
+              Agendar
+            </a>
+          </div>
+        </div>
       </section>
     </main>
-  );
-}
-
-export default function NovoAgendamento() {
-  return (
-    <Suspense fallback={null}>
-      <NovoAgendamentoForm />
-    </Suspense>
   );
 }
