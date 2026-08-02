@@ -159,4 +159,4 @@ export default function Agenda() {
       <AgendaContent />
     </Suspense>
   );
-}
+}pnpm build
