@@ -1,6 +1,25 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
 export default function Dashboard() {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("barberos_token");
+
+    if (!token) {
+      router.replace("/login");
+    }
+  }, [router]);
+
+  function handleLogout() {
+    localStorage.removeItem("barberos_token");
+    router.replace("/login");
+  }
+
   return (
     <main className={styles.page}>
       <aside className={styles.sidebar}>
@@ -56,7 +75,9 @@ export default function Dashboard() {
 
           <button
             className={styles.profile}
-            aria-label="Abrir perfil"
+            aria-label="Sair"
+            type="button"
+            onClick={handleLogout}
           >
             KR
           </button>
@@ -99,7 +120,10 @@ export default function Dashboard() {
         <section className={styles.agenda}>
           <div className={styles.sectionHeader}>
             <div>
-              <span className={styles.welcome}>Hoje</span>
+              <span className={styles.welcome}>
+                Hoje
+              </span>
+
               <h2>Próximos agendamentos</h2>
             </div>
 
@@ -112,7 +136,9 @@ export default function Dashboard() {
           </div>
 
           <div className={styles.appointment}>
-            <div className={styles.time}>09:00</div>
+            <div className={styles.time}>
+              09:00
+            </div>
 
             <div className={styles.client}>
               <strong>João Silva</strong>
@@ -133,7 +159,9 @@ export default function Dashboard() {
           </div>
 
           <div className={styles.appointment}>
-            <div className={styles.time}>10:30</div>
+            <div className={styles.time}>
+              10:30
+            </div>
 
             <div className={styles.client}>
               <strong>Pedro Santos</strong>
@@ -154,7 +182,9 @@ export default function Dashboard() {
           </div>
 
           <div className={styles.appointment}>
-            <div className={styles.time}>14:00</div>
+            <div className={styles.time}>
+              14:00
+            </div>
 
             <div className={styles.client}>
               <strong>Gabriel Souza</strong>
