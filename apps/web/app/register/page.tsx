@@ -16,37 +16,146 @@ export default function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
+
+    if (loading) {
+      return;
+    }
 
     setError("");
     setSuccess(false);
+
+    const nomeNormalizado = nome.trim();
+    const nomeBarbeariaNormalizado =
+      nomeBarbearia.trim();
+    const telefoneNormalizado =
+      telefoneBarbearia.trim();
+    const emailNormalizado =
+      email.trim().toLowerCase();
+
+    if (
+      !nomeNormalizado ||
+      !nomeBarbeariaNormalizado ||
+      !emailNormalizado ||
+      !senha
+    ) {
+      setError(
+        "Preencha todos os campos obrigatórios.",
+      );
+      return;
+    }
+
+    if (senha.length < 6) {
+      setError(
+        "A senha deve possuir pelo menos 6 caracteres.",
+      );
+      return;
+    }
+
+    if (nomeNormalizado.length > 100) {
+      setError("Nome inválido.");
+      return;
+    }
+
+    if (
+      nomeBarbeariaNormalizado.length > 100
+    ) {
+      setError("Nome da barbearia inválido.");
+      return;
+    }
+
+    if (emailNormalizado.length > 254) {
+      setError("Email inválido.");
+      return;
+    }
+
+    if (senha.length > 128) {
+      setError("Senha inválida.");
+      return;
+    }
+
+    if (
+      telefoneNormalizado.length > 30
+    ) {
+      setError("Telefone inválido.");
+      return;
+    }
+
+    if (!API_URL) {
+      setError(
+        "Não foi possível conectar ao servidor. Tente novamente mais tarde.",
+      );
+      return;
+    }
+
     setLoading(true);
 
-    try {
-      const response = await fetch(`${API_URL}/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nome,
-          email,
-          senha,
-          nomeBarbearia,
-          telefoneBarbearia,
-        }),
-      });
+    const controller = new AbortController();
 
-      const data = await response.json();
+    const timeout = setTimeout(() => {
+      controller.abort();
+    }, 10000);
+
+    try {
+      const response = await fetch(
+        `${API_URL}/auth/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nome: nomeNormalizado,
+            email: emailNormalizado,
+            senha,
+            nomeBarbearia:
+              nomeBarbeariaNormalizado,
+            telefoneBarbearia:
+              telefoneNormalizado || undefined,
+          }),
+          signal: controller.signal,
+          cache: "no-store",
+        },
+      );
+
+      let data: {
+        token?: string;
+        message?: string | string[];
+      } = {};
+
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
 
       if (!response.ok) {
         throw new Error(
-          data.message || "Não foi possível realizar o cadastro."
+          "Não foi possível realizar o cadastro.",
         );
       }
 
-      localStorage.setItem("barberos_token", data.token);
+      if (
+        !data.token ||
+        typeof data.token !== "string"
+      ) {
+        throw new Error(
+          "Não foi possível concluir o cadastro.",
+        );
+      }
+
+      /*
+       * Temporário:
+       * o backend atual ainda retorna o JWT.
+       *
+       * Na próxima etapa vamos migrar para
+       * cookie HttpOnly.
+       */
+      localStorage.setItem(
+        "barberos_token",
+        data.token,
+      );
 
       setSuccess(true);
 
@@ -57,15 +166,25 @@ export default function Register() {
       setSenha("");
 
       setTimeout(() => {
-        window.location.href = "/dashboard";
+        window.location.replace("/dashboard");
       }, 1800);
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Erro ao conectar com o servidor."
-      );
+      if (
+        err instanceof DOMException &&
+        err.name === "AbortError"
+      ) {
+        setError(
+          "O servidor demorou para responder. Tente novamente.",
+        );
+      } else {
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Não foi possível realizar o cadastro.",
+        );
+      }
     } finally {
+      clearTimeout(timeout);
       setLoading(false);
     }
   }
@@ -83,77 +202,127 @@ export default function Register() {
           </p>
         </div>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+        >
           <div>
-            <label htmlFor="name">Seu nome</label>
+            <label htmlFor="name">
+              Seu nome
+            </label>
+
             <input
               id="name"
               type="text"
               autoComplete="name"
               value={nome}
-              onChange={(event) => setNome(event.target.value)}
+              onChange={(event) =>
+                setNome(event.target.value)
+              }
               required
+              disabled={loading}
+              maxLength={100}
             />
           </div>
 
           <div>
-            <label htmlFor="barbershop">Nome da barbearia</label>
+            <label htmlFor="barbershop">
+              Nome da barbearia
+            </label>
+
             <input
               id="barbershop"
               type="text"
               autoComplete="organization"
               value={nomeBarbearia}
-              onChange={(event) => setNomeBarbearia(event.target.value)}
+              onChange={(event) =>
+                setNomeBarbearia(
+                  event.target.value,
+                )
+              }
               required
+              disabled={loading}
+              maxLength={100}
             />
           </div>
 
           <div>
-            <label htmlFor="phone">Telefone da barbearia</label>
+            <label htmlFor="phone">
+              Telefone da barbearia
+            </label>
+
             <input
               id="phone"
               type="tel"
               autoComplete="tel"
               value={telefoneBarbearia}
               onChange={(event) =>
-                setTelefoneBarbearia(event.target.value)
+                setTelefoneBarbearia(
+                  event.target.value,
+                )
               }
+              disabled={loading}
+              maxLength={30}
             />
           </div>
 
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              Email
+            </label>
+
             <input
               id="email"
               type="email"
               autoComplete="email"
+              inputMode="email"
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
               required
+              disabled={loading}
+              maxLength={254}
             />
           </div>
 
           <div>
-            <label htmlFor="password">Senha</label>
+            <label htmlFor="password">
+              Senha
+            </label>
+
             <input
               id="password"
               type="password"
               autoComplete="new-password"
               value={senha}
-              onChange={(event) => setSenha(event.target.value)}
+              onChange={(event) =>
+                setSenha(event.target.value)
+              }
               required
               minLength={6}
+              maxLength={128}
+              disabled={loading}
             />
           </div>
 
           {error && (
-            <p className={styles.error} role="alert">
+            <p
+              className={styles.error}
+              role="alert"
+              aria-live="polite"
+            >
               {error}
             </p>
           )}
 
-          <button type="submit" disabled={loading}>
-            {loading ? "Criando conta..." : "Criar conta"}
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? "Criando conta..."
+              : "Criar conta"}
           </button>
         </form>
 
@@ -162,7 +331,9 @@ export default function Register() {
           <a href="/login">Entrar</a>
         </p>
 
-        <footer>© 2026 Kauan Rodrigues</footer>
+        <footer>
+          © 2026 Kauan Rodrigues
+        </footer>
       </section>
 
       {success && (
@@ -171,13 +342,18 @@ export default function Register() {
             <div className={styles.successIcon}>
               <svg viewBox="0 0 52 52">
                 <circle
-                  className={styles.successCircle}
+                  className={
+                    styles.successCircle
+                  }
                   cx="26"
                   cy="26"
                   r="24"
                 />
+
                 <path
-                  className={styles.successCheck}
+                  className={
+                    styles.successCheck
+                  }
                   d="M14 27l8 8 16-18"
                 />
               </svg>
@@ -189,7 +365,9 @@ export default function Register() {
               Sua barbearia foi criada com sucesso.
             </p>
 
-            <span>Preparando seu painel...</span>
+            <span>
+              Preparando seu painel...
+            </span>
           </div>
         </div>
       )}

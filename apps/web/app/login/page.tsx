@@ -12,50 +12,98 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  async function handleSubmit(
-    event: FormEvent<HTMLFormElement>,
-  ) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
+    if (loading) {
+      return;
+    }
+
     setError("");
+
+    const emailNormalizado = email.trim().toLowerCase();
+
+    if (!emailNormalizado || !senha) {
+      setError("Email e senha são obrigatórios.");
+      return;
+    }
+
+    if (!API_URL) {
+      setError(
+        "Não foi possível conectar ao servidor. Tente novamente mais tarde.",
+      );
+      return;
+    }
+
     setLoading(true);
 
+    const controller = new AbortController();
+
+    const timeout = setTimeout(() => {
+      controller.abort();
+    }, 10000);
+
     try {
-      const response = await fetch(
-        `${API_URL}/auth/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            senha,
-          }),
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        body: JSON.stringify({
+          email: emailNormalizado,
+          senha,
+        }),
+        signal: controller.signal,
+        cache: "no-store",
+      });
 
-      const data = await response.json();
+      let data: {
+        token?: string;
+        message?: string | string[];
+      } = {};
 
-      if (!response.ok) {
-        throw new Error(
-          data.message || "Email ou senha inválidos.",
-        );
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
       }
 
-      localStorage.setItem(
-        "barberos_token",
-        data.token,
-      );
+      if (!response.ok) {
+        throw new Error("Email ou senha inválidos.");
+      }
 
-      window.location.href = "/dashboard";
+      if (!data.token || typeof data.token !== "string") {
+        throw new Error("Não foi possível concluir o login.");
+      }
+
+      /*
+       * Temporário:
+       * o backend ainda retorna o JWT diretamente.
+       *
+       * Em uma próxima etapa vamos migrar para
+       * cookie HttpOnly, evitando que o token fique
+       * acessível ao JavaScript do navegador.
+       */
+      localStorage.setItem("barberos_token", data.token);
+
+      window.location.replace("/dashboard");
     } catch (err) {
-      setError(
-        err instanceof Error
-          ? err.message
-          : "Erro ao conectar com o servidor.",
-      );
+      if (
+        err instanceof DOMException &&
+        err.name === "AbortError"
+      ) {
+        setError(
+          "O servidor demorou para responder. Tente novamente.",
+        );
+      } else {
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Não foi possível realizar o login.",
+        );
+      }
     } finally {
+      clearTimeout(timeout);
       setLoading(false);
     }
   }
@@ -86,11 +134,14 @@ export default function Login() {
               id="email"
               type="email"
               autoComplete="email"
+              inputMode="email"
               value={email}
               onChange={(event) =>
                 setEmail(event.target.value)
               }
               required
+              disabled={loading}
+              maxLength={254}
             />
           </div>
 
@@ -108,6 +159,8 @@ export default function Login() {
                 setSenha(event.target.value)
               }
               required
+              disabled={loading}
+              maxLength={128}
             />
           </div>
 
@@ -115,6 +168,7 @@ export default function Login() {
             <p
               className={styles.error}
               role="alert"
+              aria-live="polite"
             >
               {error}
             </p>
@@ -124,7 +178,9 @@ export default function Login() {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Entrando..." : "Entrar"}
+            {loading
+              ? "Entrando..."
+              : "Entrar"}
           </button>
         </form>
 
