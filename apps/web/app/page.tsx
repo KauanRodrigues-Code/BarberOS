@@ -1,25 +1,32 @@
+import Link from "next/link";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-  <main className={styles.page}>
-    <nav className={styles.nav}>
-      <div className={styles.logo}>
-        Barber<span>OS</span>
-      </div>
+    <main className={styles.page}>
+      {/* =====================================================
+          NAVBAR
+      ===================================================== */}
+      <nav className={styles.nav}>
+        <Link href="/" className={styles.logo}>
+          Barber<span>OS</span>
+        </Link>
 
-      <div className={styles.navLinks}>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#recursos">Recursos</a>
-        <a href="#sobre">Sobre</a>
-      </div>
+        <div className={styles.navLinks}>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#recursos">Recursos</a>
+          <a href="#sobre">Sobre</a>
+        </div>
 
-      <a href="/login" className={styles.login}>
-        Entrar
-      </a>
-    </nav>
+        <Link href="/login" className={styles.login}>
+          Entrar
+        </Link>
+      </nav>
 
-    <section className={styles.hero}>
+      {/* =====================================================
+          HERO
+      ===================================================== */}
+      <section className={styles.hero}>
         <div className={styles.heroContent}>
           <div className={styles.badge}>
             🚀 Gestão inteligente para barbearias
@@ -28,24 +35,22 @@ export default function Home() {
           <h1>
             Sua barbearia
             <br />
-            <span>em outro nível.</span>
+            em outro nível
+            <br />
+            com o <span>BarberOS.</span>
           </h1>
 
           <p>
-            Organize sua agenda, clientes, barbeiros e serviços em um
-            único lugar. O BarberOS simplifica a gestão para você focar
-            no que realmente importa: seu negócio.
+            Organize sua agenda, clientes, barbeiros, serviços e financeiro
+            em um único sistema. Mais controle para você e uma experiência
+            melhor para seus clientes.
           </p>
 
           <div className={styles.buttons}>
-            <a href="/register" className={styles.primary}>
+            <Link href="/planos" className={styles.primary}>
               Começar agora
               <span>→</span>
-            </a>
-
-            <a href="#como-funciona" className={styles.secondary}>
-              Conhecer o BarberOS
-            </a>
+            </Link>
           </div>
 
           <div className={styles.trust}>
@@ -57,8 +62,8 @@ export default function Home() {
             <div className={styles.trustDivider} />
 
             <div className={styles.trustItem}>
-              <strong>24h</strong>
-              <span>Disponível</span>
+              <strong>24/7</strong>
+              <span>Acessível</span>
             </div>
 
             <div className={styles.trustDivider} />
@@ -70,6 +75,9 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ===================================================
+            HERO PREVIEW
+        =================================================== */}
         <div className={styles.heroPreview}>
           <div className={styles.previewGlow} />
 
@@ -82,111 +90,180 @@ export default function Home() {
               </div>
 
               <span className={styles.previewTitle}>
-                BarberOS Dashboard
+                app.barberos.com
               </span>
 
               <span className={styles.previewStatus}>
-                ● Online
+                ● ONLINE
               </span>
             </div>
 
             <div className={styles.previewBody}>
-              <div className={styles.previewSidebar}>
+              <aside className={styles.previewSidebar}>
                 <div className={styles.previewLogo}>
                   Barber<span>OS</span>
                 </div>
 
                 <div className={styles.previewMenu}>
-                  <div className={styles.menuActive}>
-                    Dashboard
-                  </div>
+                  <div className={styles.menuActive}>Dashboard</div>
                   <div>Agenda</div>
                   <div>Clientes</div>
                   <div>Barbeiros</div>
                   <div>Serviços</div>
                   <div>Financeiro</div>
                 </div>
-              </div>
+              </aside>
 
               <div className={styles.previewMain}>
                 <div className={styles.previewWelcome}>
-                  <span>Bem-vindo de volta</span>
+                  <span>VISÃO GERAL</span>
                   <strong>Olá, Kauan 👋</strong>
                 </div>
 
                 <div className={styles.previewStats}>
                   <div>
-                    <span>Agendamentos</span>
-                    <strong>12</strong>
+                    <span>AGENDAMENTOS</span>
+                    <strong>24</strong>
                   </div>
 
                   <div>
-                    <span>Clientes</span>
-                    <strong>48</strong>
+                    <span>CLIENTES</span>
+                    <strong>186</strong>
                   </div>
 
                   <div>
-                    <span>Faturamento</span>
-                    <strong>R$ 1.280</strong>
+                    <span>FATURAMENTO</span>
+                    <strong>R$ 8.420</strong>
                   </div>
                 </div>
 
                 <div className={styles.previewAgenda}>
                   <div className={styles.previewAgendaHeader}>
-                    <strong>Próximos agendamentos</strong>
+                    <strong>Próximos horários</strong>
                     <span>Ver agenda →</span>
                   </div>
 
                   <div className={styles.previewAppointment}>
-                    <strong>09:00</strong>
+                    <strong>14:00</strong>
+
                     <div>
                       <span>João Silva</span>
                       <small>Corte + Barba</small>
                     </div>
+
                     <em>Confirmado</em>
                   </div>
 
                   <div className={styles.previewAppointment}>
-                    <strong>10:30</strong>
+                    <strong>14:30</strong>
+
                     <div>
                       <span>Pedro Santos</span>
-                      <small>Corte</small>
+                      <small>Corte tradicional</small>
                     </div>
-                    <em>Pendente</em>
+
+                    <em>Confirmado</em>
                   </div>
 
                   <div className={styles.previewAppointment}>
-                    <strong>14:00</strong>
+                    <strong>15:00</strong>
+
                     <div>
-                      <span>Gabriel Souza</span>
-                      <small>Corte + Barba</small>
+                      <span>Lucas Oliveira</span>
+                      <small>Barba</small>
                     </div>
+
                     <em>Confirmado</em>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* FINANCEIRO */}
+          <div className={styles.financePreview}>
+            <div className={styles.financeHeader}>
+              <div>
+                <span>FINANCEIRO</span>
+                <strong>Faturamento</strong>
+              </div>
+
+              <span className={styles.financePeriod}>
+                Este mês
+              </span>
+            </div>
+
+            <div className={styles.financeValue}>
+              R$ 8.420
+            </div>
+
+            <div className={styles.financeGrowth}>
+              <span>↑ 18,4%</span>
+              <small>vs. mês anterior</small>
+            </div>
+
+            <div className={styles.financeChart}>
+              <span style={{ height: "32%" }} />
+              <span style={{ height: "47%" }} />
+              <span style={{ height: "38%" }} />
+              <span style={{ height: "60%" }} />
+              <span style={{ height: "52%" }} />
+              <span style={{ height: "76%" }} />
+              <span style={{ height: "68%" }} />
+              <span style={{ height: "91%" }} />
+            </div>
+
+            <div className={styles.financeFooter}>
+              <div>
+                <span>ENTRADAS</span>
+                <strong>R$ 9.240</strong>
+              </div>
+
+              <div>
+                <span>DESPESAS</span>
+                <strong>R$ 820</strong>
+              </div>
+
+              <div>
+                <span>LÍQUIDO</span>
+                <strong className={styles.financePositive}>
+                  R$ 8.420
+                </strong>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* =====================================================
+          STATS
+      ===================================================== */}
       <section className={styles.statsBar}>
         <div>
           <strong>Agenda organizada</strong>
-          <span>Tenha controle total dos seus horários</span>
+          <span>
+            Visualize todos os horários da sua barbearia.
+          </span>
         </div>
 
         <div>
           <strong>Clientes centralizados</strong>
-          <span>Todos os seus clientes em um só lugar</span>
+          <span>
+            Tenha todas as informações dos seus clientes em um só lugar.
+          </span>
         </div>
 
         <div>
-          <strong>Gestão simplificada</strong>
-          <span>Menos burocracia, mais produtividade</span>
+          <strong>Controle financeiro</strong>
+          <span>
+            Acompanhe entradas, despesas e resultados.
+          </span>
         </div>
       </section>
 
+      {/* =====================================================
+          COMO FUNCIONA
+      ===================================================== */}
       <section
         id="como-funciona"
         className={styles.section}
@@ -199,209 +276,360 @@ export default function Home() {
           <h2>
             Simples para você.
             <br />
-            <span>Poderoso para o seu negócio.</span>
+            <span>Poderoso para sua barbearia.</span>
           </h2>
 
           <p>
-            O BarberOS foi pensado para tirar a complexidade da gestão
-            da sua barbearia.
+            O BarberOS foi pensado para deixar a gestão da sua
+            barbearia mais simples, rápida e organizada.
           </p>
         </div>
 
+        {/* ===================================================
+            OS CARDS TERMINAM AQUI.
+        =================================================== */}
+
         <div className={styles.steps}>
-          <div className={styles.step}>
+          <article className={styles.step}>
             <div className={styles.stepNumber}>01</div>
-
-            <div className={styles.stepIcon}>🏪</div>
-
-            <h3>Crie sua barbearia</h3>
-
-            <p>
-              Cadastre sua conta e configure as informações do seu
-              negócio em poucos minutos.
-            </p>
-          </div>
-
-          <div className={styles.step}>
-            <div className={styles.stepNumber}>02</div>
-
-            <div className={styles.stepIcon}>⚙️</div>
-
-            <h3>Configure sua equipe</h3>
-
-            <p>
-              Adicione seus barbeiros, serviços, horários e deixe
-              tudo organizado.
-            </p>
-          </div>
-
-          <div className={styles.step}>
-            <div className={styles.stepNumber}>03</div>
 
             <div className={styles.stepIcon}>📅</div>
 
-            <h3>Comece a gerenciar</h3>
+            <h3>Organize sua agenda</h3>
 
             <p>
-              Controle seus agendamentos, clientes e resultados em
-              uma única plataforma.
+              Controle todos os horários, barbeiros e
+              agendamentos em uma visão simples e organizada.
             </p>
+          </article>
+
+          <article className={styles.step}>
+            <div className={styles.stepNumber}>02</div>
+
+            <div className={styles.stepIcon}>👥</div>
+
+            <h3>Gerencie seus clientes</h3>
+
+            <p>
+              Cadastre clientes e tenha acesso rápido às
+              informações importantes de cada atendimento.
+            </p>
+          </article>
+
+          <article className={styles.step}>
+            <div className={styles.stepNumber}>03</div>
+
+            <div className={styles.stepIcon}>📊</div>
+
+            <h3>Acompanhe seus resultados</h3>
+
+            <p>
+              Tenha uma visão clara do faturamento,
+              serviços realizados e desempenho da sua barbearia.
+            </p>
+          </article>
+        </div>
+
+        {/* ===================================================
+            AGENDA — FORA DOS CARDS
+        =================================================== */}
+
+        <div className={styles.agendaStandalone}>
+          <div className={styles.agendaStandaloneLabel}>
+            <span>04</span>
+            <div>
+              <strong>Tenha tudo em um só lugar</strong>
+              <p>
+                Uma agenda visual para você acompanhar seus
+                próximos atendimentos em poucos segundos.
+              </p>
+            </div>
+          </div>
+
+          <div className={styles.miniDashboard}>
+            <div className={styles.miniDashboardTop}>
+              <div className={styles.miniDashboardDots}>
+                <span />
+                <span />
+                <span />
+              </div>
+
+              <span>BarberOS — Agenda</span>
+
+              <small>● ONLINE</small>
+            </div>
+
+            <div className={styles.miniDashboardBody}>
+              <aside className={styles.miniDashboardSidebar}>
+                <strong>
+                  Barber<span>OS</span>
+                </strong>
+
+                <div className={styles.miniDashboardMenu}>
+                  <span>Dashboard</span>
+                  <span className={styles.miniMenuActive}>
+                    Agenda
+                  </span>
+                  <span>Clientes</span>
+                  <span>Barbeiros</span>
+                  <span>Serviços</span>
+                  <span>Financeiro</span>
+                </div>
+              </aside>
+
+              <div className={styles.miniDashboardMain}>
+                <div className={styles.miniDashboardHeading}>
+                  <div>
+                    <small>AGENDA</small>
+                    <strong>Hoje, 08 de agosto</strong>
+                  </div>
+
+                  <span>+ Agendar</span>
+                </div>
+
+                <div className={styles.miniScheduleList}>
+                  <div className={styles.miniScheduleItem}>
+                    <strong>14:00</strong>
+
+                    <div>
+                      <span>João Silva</span>
+                      <small>
+                        Corte + Barba • Carlos
+                      </small>
+                    </div>
+
+                    <em>Confirmado</em>
+                  </div>
+
+                  <div className={styles.miniScheduleItem}>
+                    <strong>14:30</strong>
+
+                    <div>
+                      <span>Pedro Santos</span>
+                      <small>
+                        Corte • Rafael
+                      </small>
+                    </div>
+
+                    <em>Confirmado</em>
+                  </div>
+
+                  <div className={styles.miniScheduleItem}>
+                    <strong>15:00</strong>
+
+                    <div>
+                      <span>Lucas Oliveira</span>
+                      <small>
+                        Barba • Carlos
+                      </small>
+                    </div>
+
+                    <em>Confirmado</em>
+                  </div>
+
+                  <div className={styles.miniScheduleItem}>
+                    <strong>15:30</strong>
+
+                    <div>
+                      <span>Gabriel Costa</span>
+                      <small>
+                        Corte • Rafael
+                      </small>
+                    </div>
+
+                    <em>Confirmado</em>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* =====================================================
+          RECURSOS
+      ===================================================== */}
       <section
         id="recursos"
         className={`${styles.section} ${styles.featuresSection}`}
       >
         <div className={styles.sectionHeading}>
           <span className={styles.sectionLabel}>
-            TUDO EM UM SÓ LUGAR
+            RECURSOS
           </span>
 
           <h2>
-            Sua operação,
+            Tudo que sua
             <br />
-            <span>mais inteligente.</span>
+            <span>barbearia precisa.</span>
           </h2>
 
           <p>
-            Ferramentas para transformar a rotina da sua barbearia.
+            Ferramentas pensadas para facilitar sua rotina
+            e ajudar sua barbearia a crescer.
           </p>
         </div>
 
         <div className={styles.features}>
-          <div className={styles.featureCard}>
+          <article className={styles.featureCard}>
             <div className={styles.featureIcon}>📅</div>
+
             <h3>Agenda inteligente</h3>
+
             <p>
-              Visualize seus horários e mantenha todos os
-              atendimentos organizados.
+              Visualize horários, organize atendimentos e
+              evite conflitos na sua agenda.
             </p>
+
             <span>01</span>
-          </div>
+          </article>
 
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>👥</div>
+          <article className={styles.featureCard}>
+            <div className={styles.featureIcon}>👤</div>
+
             <h3>Gestão de clientes</h3>
+
             <p>
-              Tenha as informações dos seus clientes sempre
-              acessíveis.
+              Cadastre clientes e mantenha seu histórico
+              organizado.
             </p>
+
             <span>02</span>
-          </div>
+          </article>
 
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>💈</div>
-            <h3>Equipe organizada</h3>
-            <p>
-              Gerencie seus barbeiros, horários e disponibilidade.
-            </p>
-            <span>03</span>
-          </div>
-
-          <div className={styles.featureCard}>
+          <article className={styles.featureCard}>
             <div className={styles.featureIcon}>✂️</div>
+
+            <h3>Barbeiros</h3>
+
+            <p>
+              Gerencie sua equipe, disponibilidade, folgas
+              e status dos profissionais.
+            </p>
+
+            <span>03</span>
+          </article>
+
+          <article className={styles.featureCard}>
+            <div className={styles.featureIcon}>💈</div>
+
             <h3>Serviços</h3>
+
             <p>
-              Cadastre seus serviços, preços e duração dos
-              atendimentos.
+              Cadastre seus serviços, preços e organize
+              tudo de forma simples.
             </p>
+
             <span>04</span>
-          </div>
+          </article>
 
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>📈</div>
-            <h3>Visão financeira</h3>
+          <article className={styles.featureCard}>
+            <div className={styles.featureIcon}>💰</div>
+
+            <h3>Financeiro</h3>
+
             <p>
-              Acompanhe o desempenho financeiro da sua barbearia.
+              Acompanhe faturamento, entradas, despesas
+              e resultados da sua operação.
             </p>
+
             <span>05</span>
-          </div>
+          </article>
 
-          <div className={styles.featureCard}>
-            <div className={styles.featureIcon}>🌐</div>
-            <h3>Presença online</h3>
+          <article className={styles.featureCard}>
+            <div className={styles.featureIcon}>📱</div>
+
+            <h3>Agendamento online</h3>
+
             <p>
-              Tenha uma experiência moderna para seus clientes.
+              Seus clientes podem escolher serviço,
+              barbeiro, data e horário.
             </p>
+
             <span>06</span>
-          </div>
+          </article>
         </div>
       </section>
 
+      {/* =====================================================
+          SOBRE
+      ===================================================== */}
       <section
         id="sobre"
         className={styles.highlight}
       >
         <div className={styles.highlightContent}>
           <span className={styles.sectionLabel}>
-            FEITO PARA BARBEARIAS
+            BARBEROS
           </span>
 
           <h2>
-            Pare de perder tempo
+            Menos tempo
             <br />
-            <span>com a desorganização.</span>
+            <span>organizando.</span>
+            <br />
+            Mais tempo
+            <br />
+            trabalhando.
           </h2>
 
           <p>
-            Agenda no papel, mensagens espalhadas, informações
-            perdidas e falta de controle fazem parte da rotina de
-            muitas barbearias.
+            O BarberOS nasceu para resolver um problema simples:
+            deixar a gestão de uma barbearia mais prática.
           </p>
 
           <p>
-            O BarberOS reúne tudo em um único sistema para você
-            administrar seu negócio de forma simples, rápida e
-            profissional.
+            Em vez de depender de várias ferramentas diferentes,
+            você encontra agenda, clientes, equipe, serviços e
+            financeiro em uma única plataforma.
           </p>
-
-          <a href="/register" className={styles.primary}>
-            Quero usar o BarberOS
-            <span>→</span>
-          </a>
         </div>
 
         <div className={styles.highlightVisual}>
-          <div className={styles.bigNumber}>01</div>
+          <div className={styles.bigNumber}>OS</div>
 
           <div className={styles.visualCard}>
-            <span>GESTÃO</span>
+            <span>GESTÃO INTELIGENTE</span>
+
             <strong>
-              Menos trabalho manual.
+              Sua operação.
+              <br />
+              Em um só lugar.
             </strong>
+
             <p>
-              Mais tempo para atender seus clientes e fazer sua
-              barbearia crescer.
+              Mais organização, mais controle e uma experiência
+              melhor para seus clientes.
             </p>
           </div>
         </div>
       </section>
 
+      {/* =====================================================
+          CTA
+      ===================================================== */}
       <section className={styles.finalCta}>
         <div className={styles.ctaGlow} />
 
-        <span className={styles.sectionLabel}>
-          PRONTO PARA COMEÇAR?
-        </span>
-
         <h2>
-          Sua barbearia merece
+          Pronto para levar sua
           <br />
-          <span>uma gestão melhor.</span>
+          <span>barbearia para outro nível?</span>
         </h2>
 
         <p>
-          Comece agora e leve sua barbearia para outro nível.
+          Comece a organizar sua operação hoje.
         </p>
 
-        <a href="/register" className={styles.primary}>
-          Criar minha conta
+        <Link href="/planos" className={styles.primary}>
+          Começar agora
           <span>→</span>
-        </a>
+        </Link>
       </section>
 
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
       <footer className={styles.footer}>
         <div className={styles.footerLogo}>
           Barber<span>OS</span>
@@ -412,11 +640,26 @@ export default function Home() {
         </p>
 
         <div className={styles.footerBottom}>
-          <span>© 2026 Kauan Rodrigues</span>
+          <span>
+            © 2026 Kauan Rodrigues
+          </span>
 
-          <div>
-            <a href="/login">Entrar</a>
-            <a href="/register">Criar conta</a>
+          <div className={styles.footerLinks}>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </footer>

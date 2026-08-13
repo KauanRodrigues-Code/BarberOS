@@ -20,9 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={outfit.variable}>
-        {children}
-      </body>
+      <body className={outfit.variable}>{children}</body>
     </html>
   );
 }
