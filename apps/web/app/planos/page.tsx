@@ -199,7 +199,8 @@ export default function Planos() {
               <span>✦</span>
               <strong>Análises rápidas</strong>
               <p>
-                Tenha respostas e insights de forma simples.
+               
+               dc Tenha respostas e insights de forma simples.
               </p>
             </div>
 
